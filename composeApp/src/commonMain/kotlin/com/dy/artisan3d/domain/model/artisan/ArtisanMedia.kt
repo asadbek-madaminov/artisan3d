@@ -1,0 +1,1 @@
+package com.dy.artisan3d.domain.model.artisandata class ArtisanMedia(    val id: Int,    val youtubeLink: String,    val imageUrl: String,    val title: String)

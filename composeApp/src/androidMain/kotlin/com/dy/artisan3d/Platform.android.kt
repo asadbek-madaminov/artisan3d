@@ -7,3 +7,6 @@ class AndroidPlatform : Platform {
 }
 
 actual fun getPlatform(): Platform = AndroidPlatform()
+actual fun isAndroidPlatform(): Boolean {
+    return true
+}

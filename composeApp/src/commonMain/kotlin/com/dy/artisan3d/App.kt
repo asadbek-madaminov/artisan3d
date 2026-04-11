@@ -44,6 +44,9 @@ fun App() {
     Artisan3DTheme {
 
         val localization = koinInject<Localization>()
+        val isAndroid = isAndroidPlatform()
+
+
         var languageISO by rememberStringSetting(
             key = "languageISO",
             defaultValue = "en"
@@ -79,8 +82,9 @@ fun App() {
         Surface(
             modifier = Modifier.fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)
-                .systemBarsPadding()
-                ,
+                .then(
+                    if (isAndroid) Modifier.systemBarsPadding() else Modifier
+                ),
             color = MaterialTheme.colorScheme.background, // Dark/Light-ga qarab o'zgaradi
             contentColor = MaterialTheme.colorScheme.onBackground // Matn rangini belgilaydi
         ) {

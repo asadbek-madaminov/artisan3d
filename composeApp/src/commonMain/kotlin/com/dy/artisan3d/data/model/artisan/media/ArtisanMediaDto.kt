@@ -1,0 +1,1 @@
+package com.dy.artisan3d.data.model.artisan.mediaimport kotlinx.serialization.Serializable@Serializabledata class ArtisanMediaDto(    val id: Int,    val link: String,    val image: String,    val translations: Map<String, MediaTranslationDto>)

@@ -1,0 +1,1 @@
+package com.dy.artisan3d.data.model.artisan.mediaimport kotlinx.serialization.SerialNameimport kotlinx.serialization.Serializable@Serializabledata class MediaMetaDto(    val total: Int,    @SerialName("current_page") val currentPage: Int,    @SerialName("last_page") val lastPage: Int)
