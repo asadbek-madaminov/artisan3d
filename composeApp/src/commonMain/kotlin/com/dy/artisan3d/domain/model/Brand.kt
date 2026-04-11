@@ -1,0 +1,1 @@
+package com.dy.artisan3d.domain.modeldata class Brand(    val id: Int,    val image: String?,    val productsCount: Int,    val name: String,    val address: String)

@@ -1,0 +1,1 @@
+package com.dy.artisan3d.domain.repositoryimport androidx.paging.PagingDataimport com.dy.artisan3d.domain.model.Productimport kotlinx.coroutines.flow.Flowinterface ProductRepository {    fun getProductsPager(id:Int,brandId: Int,lang: String): Flow<PagingData<Product>>}

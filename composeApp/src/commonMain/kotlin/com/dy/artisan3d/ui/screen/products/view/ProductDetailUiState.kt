@@ -1,0 +1,1 @@
+package com.dy.artisan3d.ui.screen.products.viewimport com.dy.artisan3d.domain.model.ProductDetailssealed class ProductDetailUiState {    data object Loading : ProductDetailUiState()    data class Success(val product: ProductDetails) : ProductDetailUiState()    data class Error(val message: String) : ProductDetailUiState()}

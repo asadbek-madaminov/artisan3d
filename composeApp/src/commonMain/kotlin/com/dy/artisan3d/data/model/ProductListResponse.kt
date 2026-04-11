@@ -1,0 +1,1 @@
+package com.dy.artisan3d.data.modelimport kotlinx.serialization.Serializable@Serializabledata class ProductListResponse(    val data: List<ProductDto>,    val meta: MetaDto)

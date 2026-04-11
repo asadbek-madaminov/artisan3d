@@ -1,0 +1,1 @@
+package com.dy.artisan3d.dataclass AppLanguage(var current: String = "en")

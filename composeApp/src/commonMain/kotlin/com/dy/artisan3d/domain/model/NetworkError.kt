@@ -1,0 +1,1 @@
+package com.dy.artisan3d.domain.modelsealed class NetworkError : Exception() {    object NoInternet : NetworkError()    object ServerError : NetworkError()    object SerializationError : NetworkError()    data class Unknown(val msg: String) : NetworkError()}

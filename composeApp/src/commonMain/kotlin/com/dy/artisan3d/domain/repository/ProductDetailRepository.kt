@@ -1,0 +1,1 @@
+package com.dy.artisan3d.domain.repositoryimport com.dy.artisan3d.domain.model.ProductDetailsinterface ProductDetailRepository {    suspend fun getProductDetail(productId: Int, language: String): Result<ProductDetails>}

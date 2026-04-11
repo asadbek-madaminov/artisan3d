@@ -1,0 +1,1 @@
+package com.dy.artisan3d.data.modelimport kotlinx.serialization.Serializable@Serializabledata class MetaDto(    val current_page: Int,    val last_page: Int)

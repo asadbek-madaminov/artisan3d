@@ -1,0 +1,1 @@
+package com.dy.artisan3d.diimport androidx.datastore.core.DataStoreimport androidx.datastore.preferences.core.Preferencesimport com.dy.artisan3d.data.createDataStoreimport org.koin.dsl.moduleactual fun platformModule() = module {    single<DataStore<Preferences>> { createDataStore() }}

@@ -1,0 +1,1 @@
+package com.dy.artisan3d.domain.repositoryimport com.dy.artisan3d.domain.model.Brandinterface BrandRepository {    suspend fun getBrands(lang: String): List<Brand>}

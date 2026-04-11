@@ -1,0 +1,1 @@
+package com.dy.artisan3d.domain.repositoryimport com.dy.artisan3d.domain.model.Categoryinterface CategoryRepository {    suspend fun getCategories(lang: String): List<Category>}

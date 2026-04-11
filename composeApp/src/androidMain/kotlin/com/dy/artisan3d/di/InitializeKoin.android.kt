@@ -1,0 +1,1 @@
+package com.dy.artisan3d.diimport com.dy.artisan3d.domain.Localizationimport org.koin.android.ext.koin.androidContextimport org.koin.dsl.moduleactual val targetModule = module {    single<Localization> { Localization(context = androidContext()) }}
