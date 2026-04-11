@@ -1,1 +1,1 @@
-package com.dy.artisan3d.utilobject Constants {    private const val DOMAIN = "https://artisan3dapi.tsuos.uz"    const val BASE_URL = "$DOMAIN/api/"    const val FILE_URL = "$DOMAIN/storage/"}
+package com.dy.artisan3d.utilobject Constants {    private const val DOMAIN = "https://artisan3dapi.tsuos.uz"    const val BASE_URL = "$DOMAIN/api/"    const val FILE_URL = "$DOMAIN/storage/"    const val RENDER_URL = "$DOMAIN/products/"}
