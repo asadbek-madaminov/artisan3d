@@ -85,6 +85,7 @@ fun App() {
                 .then(
                     if (isAndroid) Modifier.systemBarsPadding() else Modifier
                 ),
+            //Shu kerak
             color = MaterialTheme.colorScheme.background, // Dark/Light-ga qarab o'zgaradi
             contentColor = MaterialTheme.colorScheme.onBackground // Matn rangini belgilaydi
         ) {
