@@ -1,0 +1,1 @@
+package com.dy.artisan3d.data.model.artisan.articleimport kotlinx.serialization.Serializable@Serializabledata class ArtisanArticleTranslationDto(    val author: String? = null,    val title: String? = null,    val text: String? = null)

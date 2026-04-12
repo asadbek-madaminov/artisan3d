@@ -1,0 +1,1 @@
+package com.dy.artisan3d.domain.repositoryimport com.dy.artisan3d.domain.model.artisan.ArtisanArticleinterface ArtisanArticleRepository {    suspend fun getArticles(page: Int, lang: String): List<ArtisanArticle>}

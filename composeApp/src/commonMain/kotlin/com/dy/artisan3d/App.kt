@@ -12,6 +12,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
@@ -25,6 +26,8 @@ import com.dy.artisan3d.navigation.Navigator
 import com.dy.artisan3d.navigation.Screen
 import com.dy.artisan3d.ui.screen.choose_language.ChooseLanguage
 import com.dy.artisan3d.ui.screen.main.MainScreen
+import com.dy.artisan3d.ui.screen.main.article.detail.ArtisanArticleDetailScreen
+import com.dy.artisan3d.ui.screen.main.article.detail.ArtisanArticleDetailViewModel
 import com.dy.artisan3d.ui.screen.on_boarding.OnboardingScreen
 import com.dy.artisan3d.ui.screen.products.list.ProductListContent
 import com.dy.artisan3d.ui.screen.products.list.ProductListViewModel
@@ -153,6 +156,21 @@ fun App() {
 
                         ProductDetailScreen(viewModel){
                             navigator.goBack()
+                        }
+                    }
+
+                    entry<Screen.ArticleDetail> {entry ->
+                        val articleId = entry.articleId
+
+                        val viewModel = koinViewModel<ArtisanArticleDetailViewModel>(
+                            key = "article-detail-$articleId"
+                        ){
+                            parametersOf(articleId)
+                        }
+
+                        ArtisanArticleDetailScreen(viewModel){
+                            navigator.goBack()
+
                         }
                     }
                 },

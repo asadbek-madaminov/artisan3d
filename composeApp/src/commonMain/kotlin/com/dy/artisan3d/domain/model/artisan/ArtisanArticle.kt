@@ -1,0 +1,1 @@
+package com.dy.artisan3d.domain.model.artisandata class ArtisanArticle(    val id: Int,    val slug: String,    val author: String,    val title: String,    val shortDesc: String, // Card uchun qisqa matn    val contentHtml: String)

@@ -1,0 +1,1 @@
+package com.dy.artisan3d.data.model.artisan.articleimport kotlinx.serialization.Serializable@Serializabledata class ArtisanArticleSingleResponse(    val data: ArtisanArticleDto // List<ArticleDto> emas, bitta obyekt)

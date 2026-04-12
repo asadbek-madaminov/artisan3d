@@ -1,1 +1,1 @@
-package com.dy.artisan3d.utilexpect fun openExternalUrl(url: String)
+package com.dy.artisan3d.utilexpect fun openExternalUrl(url: String)// commonMain/.../PlatformUtils.ktexpect fun shareUrl(url: String, title: String = "")

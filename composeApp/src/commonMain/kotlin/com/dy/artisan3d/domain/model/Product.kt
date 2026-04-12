@@ -1,1 +1,1 @@
-package com.dy.artisan3d.domain.modeldata class Product(    val id: Int,    val name: String,    val description: String,    val imageUrl: String,    val glbUrl: String?)
+package com.dy.artisan3d.domain.modeldata class Product(    val id: Int,    val name: String,    val description: String,    val imageUrl: String,    val glbUrl: String?,    val badge: String)

@@ -1,1 +1,1 @@
-package com.dy.artisan3d.navigationimport kotlinx.serialization.Serializable@Serializablesealed class BottomTab {    @Serializable object Home : BottomTab()    @Serializable object Models : BottomTab()    @Serializable object Profile : BottomTab()}
+package com.dy.artisan3d.navigationimport kotlinx.serialization.Serializable@Serializablesealed class BottomTab {    @Serializable object Home : BottomTab()    @Serializable object Models : BottomTab()    @Serializable object Article: BottomTab()    @Serializable object Profile : BottomTab()}
