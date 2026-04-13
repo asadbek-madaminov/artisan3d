@@ -1,1 +1,1 @@
-package com.dy.artisan3d.domain.repositoryimport com.dy.artisan3d.domain.model.artisan.ArtisanMediainterface ArtisanMediaRepository {    suspend fun getMediaList(page: Int, lang: String): List<ArtisanMedia>}
+package com.dy.artisan3d.domain.repositoryimport com.dy.artisan3d.domain.model.artisan.ArtisanMediainterface ArtisanMediaRepository {    suspend fun getMediaList(page: Int, lang: String): Result<List<ArtisanMedia>>}
