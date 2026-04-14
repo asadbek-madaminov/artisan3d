@@ -1,0 +1,1 @@
+package com.dy.artisan3d.ui.screen.main.settingssealed interface ArtisanMenuAction {    data class Navigate(val screen: Any) : ArtisanMenuAction    data class OpenUrl(val url: String) : ArtisanMenuAction    data class Execute(val task: () -> Unit) : ArtisanMenuAction    object None : ArtisanMenuAction}

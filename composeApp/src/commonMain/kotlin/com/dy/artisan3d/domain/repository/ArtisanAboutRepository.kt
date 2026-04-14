@@ -1,0 +1,1 @@
+package com.dy.artisan3d.domain.repositoryimport com.dy.artisan3d.domain.model.artisan.ArtisanAboutinterface ArtisanAboutRepository {    suspend fun getAboutData(lang: String): Result<List<ArtisanAbout>>}

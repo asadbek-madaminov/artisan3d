@@ -1,0 +1,1 @@
+package com.dy.artisan3d.data.model.artisan.aboutimport kotlinx.serialization.Serializable@Serializabledata class ArtisanAboutResponse(    val data: List<ArtisanAboutDto>? = null)

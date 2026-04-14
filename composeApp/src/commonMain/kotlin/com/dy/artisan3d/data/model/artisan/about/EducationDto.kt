@@ -1,0 +1,1 @@
+package com.dy.artisan3d.data.model.artisan.aboutimport kotlinx.serialization.Serializable@Serializabledata class EducationDto(    val id: Int? = null,    val slug: String? = null,    val translations: Map<String, EducationTranslationDto>? = null)

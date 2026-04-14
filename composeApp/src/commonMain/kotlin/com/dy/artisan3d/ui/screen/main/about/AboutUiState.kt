@@ -1,0 +1,1 @@
+package com.dy.artisan3d.ui.screen.main.aboutimport com.dy.artisan3d.domain.model.artisan.ArtisanAboutimport org.jetbrains.compose.resources.StringResourcedata class AboutUiState(    val isLoading: Boolean = false,    val aboutData: List<ArtisanAbout> = emptyList(),    val error: StringResource? = null,    val isError: Boolean = false)

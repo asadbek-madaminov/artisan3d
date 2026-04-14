@@ -1,0 +1,1 @@
+package com.dy.artisan3d.ui.screen.main.settingsimport androidx.compose.ui.graphics.vector.ImageVectorimport org.jetbrains.compose.resources.DrawableResourceimport org.jetbrains.compose.resources.StringResourcedata class ArtisanMenuItem(    val icon: ImageVector,    val title: StringResource,    val action: ArtisanMenuAction = ArtisanMenuAction.None)
