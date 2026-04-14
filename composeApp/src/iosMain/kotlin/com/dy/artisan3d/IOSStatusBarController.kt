@@ -1,0 +1,1 @@
+package com.dy.artisan3dimport platform.UIKit.UIApplicationobject IOSStatusBarController {    var isDark: Boolean = false        set(value) {            field = value            UIApplication.sharedApplication                .keyWindow                ?.rootViewController                ?.setNeedsStatusBarAppearanceUpdate()        }}
