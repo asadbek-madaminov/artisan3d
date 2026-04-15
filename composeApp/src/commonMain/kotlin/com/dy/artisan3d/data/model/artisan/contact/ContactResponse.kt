@@ -1,0 +1,1 @@
+package com.dy.artisan3d.data.model.artisan.contactimport kotlinx.serialization.Serializable@Serializabledata class ContactResponse(    val success: Boolean,    val message: String)

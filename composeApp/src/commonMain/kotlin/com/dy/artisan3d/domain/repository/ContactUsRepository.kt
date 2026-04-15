@@ -1,0 +1,1 @@
+package com.dy.artisan3d.domain.repositoryimport com.dy.artisan3d.data.model.artisan.contact.ContactResponseinterface ContactUsRepository {    suspend fun sendContactUs(fullName: String, email: String, message: String): Result<ContactResponse>}

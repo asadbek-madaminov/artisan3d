@@ -9,15 +9,12 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
@@ -30,9 +27,14 @@ import com.dy.artisan3d.domain.Localization
 import com.dy.artisan3d.navigation.Navigator
 import com.dy.artisan3d.navigation.Screen
 import com.dy.artisan3d.ui.screen.choose_language.ChooseLanguage
+import com.dy.artisan3d.ui.screen.contact_us.ContactUsContent
+import com.dy.artisan3d.ui.screen.contact_us.ContactUsViewModel
 import com.dy.artisan3d.ui.screen.main.MainScreen
+import com.dy.artisan3d.ui.screen.main.about.AboutContent
+import com.dy.artisan3d.ui.screen.main.about.AboutViewModel
 import com.dy.artisan3d.ui.screen.main.article.detail.ArtisanArticleDetailScreen
 import com.dy.artisan3d.ui.screen.main.article.detail.ArtisanArticleDetailViewModel
+import com.dy.artisan3d.ui.screen.main.settings.ChangeLanguage
 import com.dy.artisan3d.ui.screen.main.settings.Settings
 import com.dy.artisan3d.ui.screen.on_boarding.OnboardingScreen
 import com.dy.artisan3d.ui.screen.products.list.ProductListContent
@@ -42,7 +44,6 @@ import com.dy.artisan3d.ui.screen.products.view.ProductDetailViewModel
 import com.dy.artisan3d.ui.theme.Artisan3DTheme
 import dev.burnoo.compose.remembersetting.rememberBooleanSetting
 import dev.burnoo.compose.remembersetting.rememberStringSetting
-import kotlinx.coroutines.delay
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
@@ -58,8 +59,7 @@ fun App() {
 
 
     var languageISO by rememberStringSetting(
-        key = "languageISO",
-        defaultValue = "en"
+        key = "languageISO", defaultValue = "en"
     )
 
     val appLang = koinInject<AppLanguage>()
@@ -68,30 +68,25 @@ fun App() {
     localization.applyLanguage(languageISO)
 
     var savedStartDestination by rememberStringSetting(
-        key = "startDestination",
-        defaultValue = "language"
+        key = "startDestination", defaultValue = "language"
     )
 
     var savedDarkMode by rememberBooleanSetting(
-        key = "darkMode",
-        defaultValue = isSystemInDarkTheme()
+        key = "darkMode", defaultValue = isSystemInDarkTheme()
     )
 
     val startDestination = remember {
         if (savedStartDestination == "language") Screen.ChooseLanguage else Screen.Main
     }
 
-    // MUHIM: rememberSaveable endi backStack-ni o'lmaydigan qiladi
     val navigator = rememberSaveable(saver = Navigator.saver(startDestination)) {
         Navigator(startDestination)
     }
 
     setSingletonImageLoaderFactory { context ->
-        ImageLoader.Builder(context)
-            .components {
+        ImageLoader.Builder(context).components {
                 add(KtorNetworkFetcherFactory())
-            }
-            .build()
+            }.build()
     }
 
 
@@ -111,14 +106,9 @@ fun App() {
         )
 
         Surface(
-            modifier = Modifier.fillMaxSize()
-                .background(backgroundColor)
-                .then(
+            modifier = Modifier.fillMaxSize().background(backgroundColor).then(
                     if (isAndroid) Modifier.systemBarsPadding() else Modifier
-                ),
-            //Shu kerak
-            color = backgroundColor, // Dark/Light-ga qarab o'zgaradi
-            contentColor = onBackgroundColor // Matn rangini belgilaydi
+                ), color = backgroundColor, contentColor = onBackgroundColor
         ) {
 
             NavDisplay(
@@ -131,8 +121,7 @@ fun App() {
                 entryProvider = entryProvider {
                     entry<Screen.ChooseLanguage> {
                         ChooseLanguage(
-                            lang = languageISO,
-                            onChangeLanguage = {
+                            lang = languageISO, onChangeLanguage = {
                                 languageISO = it
 
                             }) {
@@ -142,9 +131,8 @@ fun App() {
 
                     entry<Screen.OnBoarding> {
                         OnboardingScreen(onFinished = {
-                            //savedStartDestination = "2"
-                            //navigator.replaceStack(Screen.Main)
-                            navigator.navigateTo(Screen.Main)
+                            savedStartDestination = "main"
+                            navigator.replaceStack(Screen.Main)
                         })
                     }
 
@@ -152,8 +140,7 @@ fun App() {
                         MainScreen(
                             onNextScreen = {
                                 navigator.navigateTo(it)
-                            }
-                        )
+                            })
                     }
 
                     entry<Screen.Products> { entry ->
@@ -166,13 +153,11 @@ fun App() {
                             parametersOf(productId, brandId, title)
                         }
 
-                        ProductListContent(
-                            viewModel,
-                            onProductClick = {
-                                navigator.navigateTo(Screen.ProductDetail(it))
-                            }, onBack = {
-                                navigator.goBack()
-                            })
+                        ProductListContent(viewModel, onProductClick = {
+                            navigator.navigateTo(Screen.ProductDetail(it))
+                        }, onBack = {
+                            navigator.goBack()
+                        })
                     }
 
                     entry<Screen.ProductDetail> { entry ->
@@ -204,10 +189,39 @@ fun App() {
                     }
 
                     entry<Screen.Settings> {
-                        Settings(
-                            darkMode = savedDarkMode,
-                            onDarkModeChange = {
-                                savedDarkMode = it
+                        Settings(darkMode = savedDarkMode, onDarkModeChange = {
+                            savedDarkMode = it
+                        }, onBack = {
+                            navigator.goBack()
+                        }, onNext = {
+                            navigator.navigateTo(it)
+                        })
+                    }
+
+                    entry<Screen.ChangeLanguage> {
+                        ChangeLanguage(lang = languageISO, onChangeLanguage = {
+                            languageISO = it
+                        }, onBack = {
+                            navigator.goBack()
+                        })
+                    }
+
+                    entry<Screen.Abouts> {
+                        val aboutViewModel = koinViewModel<AboutViewModel>()
+
+                        AboutContent(
+                            aboutViewModel, onBack = {
+                                navigator.goBack()
+                            })
+                    }
+
+                    entry<Screen.ContactUs> {
+                        val contactUsViewModel = koinViewModel<ContactUsViewModel>()
+
+                        ContactUsContent(
+                            viewModel = contactUsViewModel,
+                            onBack = {
+                                navigator.goBack()
                             }
                         )
                     }
